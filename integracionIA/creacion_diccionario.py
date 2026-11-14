@@ -46,11 +46,21 @@ def descargar(sesion, url, intentos=REINTENTOS):
             time.sleep(espera)
 
 
+# Caracteres de uso privado con los que Wolfram representa operadores en el texto
+SIMBOLOS_WOLFRAM = {
+    "": "->",  # \[Rule]
+    "": ":>",  # \[RuleDelayed]
+}
+
+
 def texto_limpio(elemento):
     """Texto del elemento sin espacios artificiales alrededor del código en línea."""
     # get_text(" ") metería espacios entre etiquetas ("Plus [2, 2] ."); unimos sin
     # separador y solo normalizamos los espacios reales del HTML.
-    return re.sub(r"\s+", " ", elemento.get_text("")).strip()
+    texto = elemento.get_text("")
+    for simbolo, equivalente in SIMBOLOS_WOLFRAM.items():
+        texto = texto.replace(simbolo, equivalente)
+    return re.sub(r"\s+", " ", texto).strip()
 
 
 INICIO_CAJA, ABRE, CIERRA = "\\!\\(", "\\(", "\\)"

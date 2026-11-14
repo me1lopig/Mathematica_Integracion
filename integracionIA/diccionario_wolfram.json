@@ -3760,8 +3760,8 @@
   },
   {
     "intent_text": "A standard plot, with no options given",
-    "context": "Many functions in the Wolfram Language have options that determine the details of how they work. For example, in making a plot, you can use PlotTheme\"Web\" to use a web-oriented visual theme. On a keyboard, the  is automatically formed if you type -> (i.e. - followed by >).",
-    "embedding_text": "A standard plot, with no options given. Many functions in the Wolfram Language have options that determine the details of how they work. For example, in making a plot, you can use PlotTheme\"Web\" to use a web-oriented visual theme. On a keyboard, the  is automatically formed if you type -> (i.e. - followed by >).",
+    "context": "Many functions in the Wolfram Language have options that determine the details of how they work. For example, in making a plot, you can use PlotTheme->\"Web\" to use a web-oriented visual theme. On a keyboard, the -> is automatically formed if you type -> (i.e. - followed by >).",
+    "embedding_text": "A standard plot, with no options given. Many functions in the Wolfram Language have options that determine the details of how they work. For example, in making a plot, you can use PlotTheme->\"Web\" to use a web-oriented visual theme. On a keyboard, the -> is automatically formed if you type -> (i.e. - followed by >).",
     "metadata": {
       "example_code": "ListLinePlot[RandomInteger[10, 10]]",
       "embedded_objects": [],
@@ -3773,8 +3773,8 @@
   },
   {
     "intent_text": "A plot with the PlotTheme option given as \"Web\"",
-    "context": "Many functions in the Wolfram Language have options that determine the details of how they work. For example, in making a plot, you can use PlotTheme\"Web\" to use a web-oriented visual theme. On a keyboard, the  is automatically formed if you type -> (i.e. - followed by >).",
-    "embedding_text": "A plot with the PlotTheme option given as \"Web\". Many functions in the Wolfram Language have options that determine the details of how they work. For example, in making a plot, you can use PlotTheme\"Web\" to use a web-oriented visual theme. On a keyboard, the  is automatically formed if you type -> (i.e. - followed by >).",
+    "context": "Many functions in the Wolfram Language have options that determine the details of how they work. For example, in making a plot, you can use PlotTheme->\"Web\" to use a web-oriented visual theme. On a keyboard, the -> is automatically formed if you type -> (i.e. - followed by >).",
+    "embedding_text": "A plot with the PlotTheme option given as \"Web\". Many functions in the Wolfram Language have options that determine the details of how they work. For example, in making a plot, you can use PlotTheme->\"Web\" to use a web-oriented visual theme. On a keyboard, the -> is automatically formed if you type -> (i.e. - followed by >).",
     "metadata": {
       "example_code": "ListLinePlot[RandomInteger[10, 10], PlotTheme -> \"Web\"]",
       "embedded_objects": [],
@@ -3786,8 +3786,8 @@
   },
   {
     "intent_text": "A plot with the PlotTheme option given as \"Detailed\"",
-    "context": "Many functions in the Wolfram Language have options that determine the details of how they work. For example, in making a plot, you can use PlotTheme\"Web\" to use a web-oriented visual theme. On a keyboard, the  is automatically formed if you type -> (i.e. - followed by >).",
-    "embedding_text": "A plot with the PlotTheme option given as \"Detailed\". Many functions in the Wolfram Language have options that determine the details of how they work. For example, in making a plot, you can use PlotTheme\"Web\" to use a web-oriented visual theme. On a keyboard, the  is automatically formed if you type -> (i.e. - followed by >).",
+    "context": "Many functions in the Wolfram Language have options that determine the details of how they work. For example, in making a plot, you can use PlotTheme->\"Web\" to use a web-oriented visual theme. On a keyboard, the -> is automatically formed if you type -> (i.e. - followed by >).",
+    "embedding_text": "A plot with the PlotTheme option given as \"Detailed\". Many functions in the Wolfram Language have options that determine the details of how they work. For example, in making a plot, you can use PlotTheme->\"Web\" to use a web-oriented visual theme. On a keyboard, the -> is automatically formed if you type -> (i.e. - followed by >).",
     "metadata": {
       "example_code": "ListLinePlot[RandomInteger[10, 10], PlotTheme -> \"Detailed\"]",
       "embedded_objects": [],
@@ -3799,8 +3799,8 @@
   },
   {
     "intent_text": "A plot with the PlotTheme option given as \"Marketing\"",
-    "context": "Many functions in the Wolfram Language have options that determine the details of how they work. For example, in making a plot, you can use PlotTheme\"Web\" to use a web-oriented visual theme. On a keyboard, the  is automatically formed if you type -> (i.e. - followed by >).",
-    "embedding_text": "A plot with the PlotTheme option given as \"Marketing\". Many functions in the Wolfram Language have options that determine the details of how they work. For example, in making a plot, you can use PlotTheme\"Web\" to use a web-oriented visual theme. On a keyboard, the  is automatically formed if you type -> (i.e. - followed by >).",
+    "context": "Many functions in the Wolfram Language have options that determine the details of how they work. For example, in making a plot, you can use PlotTheme->\"Web\" to use a web-oriented visual theme. On a keyboard, the -> is automatically formed if you type -> (i.e. - followed by >).",
+    "embedding_text": "A plot with the PlotTheme option given as \"Marketing\". Many functions in the Wolfram Language have options that determine the details of how they work. For example, in making a plot, you can use PlotTheme->\"Web\" to use a web-oriented visual theme. On a keyboard, the -> is automatically formed if you type -> (i.e. - followed by >).",
     "metadata": {
       "example_code": "ListLinePlot[RandomInteger[10, 10], PlotTheme -> \"Marketing\"]",
       "embedded_objects": [],
@@ -3838,8 +3838,8 @@
   },
   {
     "intent_text": "With default options all but one “outlier” value are displayed",
-    "context": "One option that’s often useful for graphics is PlotRange, which specifies what range of values to include in a plot. With the default PlotRangeAutomatic, the system will try to automatically show the “interesting” part of the plot. PlotRangeAll shows all values.",
-    "embedding_text": "With default options all but one “outlier” value are displayed. One option that’s often useful for graphics is PlotRange, which specifies what range of values to include in a plot. With the default PlotRangeAutomatic, the system will try to automatically show the “interesting” part of the plot. PlotRangeAll shows all values.",
+    "context": "One option that’s often useful for graphics is PlotRange, which specifies what range of values to include in a plot. With the default PlotRange->Automatic, the system will try to automatically show the “interesting” part of the plot. PlotRange->All shows all values.",
+    "embedding_text": "With default options all but one “outlier” value are displayed. One option that’s often useful for graphics is PlotRange, which specifies what range of values to include in a plot. With the default PlotRange->Automatic, the system will try to automatically show the “interesting” part of the plot. PlotRange->All shows all values.",
     "metadata": {
       "example_code": "ListLinePlot[{36, 16, 9, 64, 1, 340, 36, 0, 49, 81}]",
       "embedded_objects": [],
@@ -3850,9 +3850,9 @@
     }
   },
   {
-    "intent_text": "PlotRangeAll says to include all points",
-    "context": "One option that’s often useful for graphics is PlotRange, which specifies what range of values to include in a plot. With the default PlotRangeAutomatic, the system will try to automatically show the “interesting” part of the plot. PlotRangeAll shows all values.",
-    "embedding_text": "PlotRangeAll says to include all points. One option that’s often useful for graphics is PlotRange, which specifies what range of values to include in a plot. With the default PlotRangeAutomatic, the system will try to automatically show the “interesting” part of the plot. PlotRangeAll shows all values.",
+    "intent_text": "PlotRange->All says to include all points",
+    "context": "One option that’s often useful for graphics is PlotRange, which specifies what range of values to include in a plot. With the default PlotRange->Automatic, the system will try to automatically show the “interesting” part of the plot. PlotRange->All shows all values.",
+    "embedding_text": "PlotRange->All says to include all points. One option that’s often useful for graphics is PlotRange, which specifies what range of values to include in a plot. With the default PlotRange->Automatic, the system will try to automatically show the “interesting” part of the plot. PlotRange->All shows all values.",
     "metadata": {
       "example_code": "ListLinePlot[{36, 16, 9, 64, 1, 340, 36, 0, 49, 81}, PlotRange -> All]",
       "embedded_objects": [],
@@ -3863,9 +3863,9 @@
     }
   },
   {
-    "intent_text": "PlotRange30 specifies to show values up to 30",
-    "context": "One option that’s often useful for graphics is PlotRange, which specifies what range of values to include in a plot. With the default PlotRangeAutomatic, the system will try to automatically show the “interesting” part of the plot. PlotRangeAll shows all values.",
-    "embedding_text": "PlotRange30 specifies to show values up to 30. One option that’s often useful for graphics is PlotRange, which specifies what range of values to include in a plot. With the default PlotRangeAutomatic, the system will try to automatically show the “interesting” part of the plot. PlotRangeAll shows all values.",
+    "intent_text": "PlotRange->30 specifies to show values up to 30",
+    "context": "One option that’s often useful for graphics is PlotRange, which specifies what range of values to include in a plot. With the default PlotRange->Automatic, the system will try to automatically show the “interesting” part of the plot. PlotRange->All shows all values.",
+    "embedding_text": "PlotRange->30 specifies to show values up to 30. One option that’s often useful for graphics is PlotRange, which specifies what range of values to include in a plot. With the default PlotRange->Automatic, the system will try to automatically show the “interesting” part of the plot. PlotRange->All shows all values.",
     "metadata": {
       "example_code": "ListLinePlot[{36, 16, 9, 64, 1, 340, 36, 0, 49, 81}, PlotRange -> 30]",
       "embedded_objects": [],
@@ -3876,9 +3876,9 @@
     }
   },
   {
-    "intent_text": "PlotRange{20, 100} specifies to show values between 20 and 100",
-    "context": "One option that’s often useful for graphics is PlotRange, which specifies what range of values to include in a plot. With the default PlotRangeAutomatic, the system will try to automatically show the “interesting” part of the plot. PlotRangeAll shows all values.",
-    "embedding_text": "PlotRange{20, 100} specifies to show values between 20 and 100. One option that’s often useful for graphics is PlotRange, which specifies what range of values to include in a plot. With the default PlotRangeAutomatic, the system will try to automatically show the “interesting” part of the plot. PlotRangeAll shows all values.",
+    "intent_text": "PlotRange->{20, 100} specifies to show values between 20 and 100",
+    "context": "One option that’s often useful for graphics is PlotRange, which specifies what range of values to include in a plot. With the default PlotRange->Automatic, the system will try to automatically show the “interesting” part of the plot. PlotRange->All shows all values.",
+    "embedding_text": "PlotRange->{20, 100} specifies to show values between 20 and 100. One option that’s often useful for graphics is PlotRange, which specifies what range of values to include in a plot. With the default PlotRange->Automatic, the system will try to automatically show the “interesting” part of the plot. PlotRange->All shows all values.",
     "metadata": {
       "example_code": "ListLinePlot[{36, 16, 9, 64, 1, 340, 36, 0, 49, 81}, \n PlotRange -> {20, 100}]",
       "embedded_objects": [],
@@ -3915,9 +3915,9 @@
     }
   },
   {
-    "intent_text": "GeoRangeAll specifies to use the whole world",
+    "intent_text": "GeoRange->All specifies to use the whole world",
     "context": "You can specify ranges for all types of graphics. In GeoListPlot and GeoGraphics you can use the option GeoRange to specify what part of the world to include in a plot.",
-    "embedding_text": "GeoRangeAll specifies to use the whole world. You can specify ranges for all types of graphics. In GeoListPlot and GeoGraphics you can use the option GeoRange to specify what part of the world to include in a plot.",
+    "embedding_text": "GeoRange->All specifies to use the whole world. You can specify ranges for all types of graphics. In GeoListPlot and GeoGraphics you can use the option GeoRange to specify what part of the world to include in a plot.",
     "metadata": {
       "example_code": "GeoListPlot[Entity[\"Country\", \"France\"], GeoRange -> All]",
       "embedded_objects": [],
@@ -4059,8 +4059,8 @@
   },
   {
     "intent_text": "A very simple graph of connections",
-    "context": "Let’s start with a very simple graph, in which 1 connects to 2, 2 to 3 and 3 to 4. Each of the connections is represented by  (typed as ->).",
-    "embedding_text": "A very simple graph of connections. Let’s start with a very simple graph, in which 1 connects to 2, 2 to 3 and 3 to 4. Each of the connections is represented by  (typed as ->).",
+    "context": "Let’s start with a very simple graph, in which 1 connects to 2, 2 to 3 and 3 to 4. Each of the connections is represented by -> (typed as ->).",
+    "embedding_text": "A very simple graph of connections. Let’s start with a very simple graph, in which 1 connects to 2, 2 to 3 and 3 to 4. Each of the connections is represented by -> (typed as ->).",
     "metadata": {
       "example_code": "Graph[{1 -> 2, 2 -> 3, 3 -> 4}]",
       "embedded_objects": [],
@@ -4072,8 +4072,8 @@
   },
   {
     "intent_text": "Automatically label all the “vertices”",
-    "context": "Let’s start with a very simple graph, in which 1 connects to 2, 2 to 3 and 3 to 4. Each of the connections is represented by  (typed as ->).",
-    "embedding_text": "Automatically label all the “vertices”. Let’s start with a very simple graph, in which 1 connects to 2, 2 to 3 and 3 to 4. Each of the connections is represented by  (typed as ->).",
+    "context": "Let’s start with a very simple graph, in which 1 connects to 2, 2 to 3 and 3 to 4. Each of the connections is represented by -> (typed as ->).",
+    "embedding_text": "Automatically label all the “vertices”. Let’s start with a very simple graph, in which 1 connects to 2, 2 to 3 and 3 to 4. Each of the connections is represented by -> (typed as ->).",
     "metadata": {
       "example_code": "Graph[{1 -> 2, 2 -> 3, 3 -> 4}, VertexLabels -> All]",
       "embedded_objects": [],
@@ -6851,9 +6851,9 @@
     }
   },
   {
-    "intent_text": "“Thread”  across the elements of two lists",
+    "intent_text": "“Thread” -> across the elements of two lists",
     "context": "Thread is a closely related operation, often useful for generating input to Graph.",
-    "embedding_text": "“Thread”  across the elements of two lists. Thread is a closely related operation, often useful for generating input to Graph.",
+    "embedding_text": "“Thread” -> across the elements of two lists. Thread is a closely related operation, often useful for generating input to Graph.",
     "metadata": {
       "example_code": "Thread[{1, 3, 5, 7, 9} -> {2, 4, 6, 8, 10}]",
       "embedded_objects": [],
@@ -7931,8 +7931,8 @@
   },
   {
     "intent_text": "Use x in the right-hand side of the rule to refer to what x_ matches",
-    "context": "The form ab is usually called a rule. If x_ appears on the left-hand side of a rule, then whatever the x_ matches can be referred to on the right-hand side as x.",
-    "embedding_text": "Use x in the right-hand side of the rule to refer to what x_ matches. The form ab is usually called a rule. If x_ appears on the left-hand side of a rule, then whatever the x_ matches can be referred to on the right-hand side as x.",
+    "context": "The form a->b is usually called a rule. If x_ appears on the left-hand side of a rule, then whatever the x_ matches can be referred to on the right-hand side as x.",
+    "embedding_text": "Use x in the right-hand side of the rule to refer to what x_ matches. The form a->b is usually called a rule. If x_ appears on the left-hand side of a rule, then whatever the x_ matches can be referred to on the right-hand side as x.",
     "metadata": {
       "example_code": "{f[1], g[2], f[2], f[6], g[3]} /. f[x_] -> x + 10",
       "embedded_objects": [],
@@ -8672,8 +8672,8 @@
   },
   {
     "intent_text": "Make a bar chart of how many times each letter appears; “e” is the most common",
-    "context": "BarChart plots the values in an association. With the option ChartLabelsAutomatic, it uses the keys as labels.",
-    "embedding_text": "Make a bar chart of how many times each letter appears; “e” is the most common. BarChart plots the values in an association. With the option ChartLabelsAutomatic, it uses the keys as labels.",
+    "context": "BarChart plots the values in an association. With the option ChartLabels->Automatic, it uses the keys as labels.",
+    "embedding_text": "Make a bar chart of how many times each letter appears; “e” is the most common. BarChart plots the values in an association. With the option ChartLabels->Automatic, it uses the keys as labels.",
     "metadata": {
       "example_code": "BarChart[\n KeyTake[LetterCounts[WikipediaData[\"computers\"]], \n  Alphabet[]], ChartLabels -> Automatic]",
       "embedded_objects": [],
@@ -9296,8 +9296,8 @@
   },
   {
     "intent_text": "In ListPlot, annotations specified by rules are implemented with callouts",
-    "context": "If you want the Wolfram Language to just automatically pick how to annotate things, then simply give the annotations with rules ().",
-    "embedding_text": "In ListPlot, annotations specified by rules are implemented with callouts. If you want the Wolfram Language to just automatically pick how to annotate things, then simply give the annotations with rules ().",
+    "context": "If you want the Wolfram Language to just automatically pick how to annotate things, then simply give the annotations with rules (->).",
+    "embedding_text": "In ListPlot, annotations specified by rules are implemented with callouts. If you want the Wolfram Language to just automatically pick how to annotate things, then simply give the annotations with rules (->).",
     "metadata": {
       "example_code": "ListPlot[{1 -> \"one\", 2 -> \"two\", 3 -> Pink, 4 -> Yellow, 5, 6, 7}]",
       "embedded_objects": [],
@@ -9309,8 +9309,8 @@
   },
   {
     "intent_text": "In PieChart, strings are assumed to be labels, and colors to be styles",
-    "context": "If you want the Wolfram Language to just automatically pick how to annotate things, then simply give the annotations with rules ().",
-    "embedding_text": "In PieChart, strings are assumed to be labels, and colors to be styles. If you want the Wolfram Language to just automatically pick how to annotate things, then simply give the annotations with rules ().",
+    "context": "If you want the Wolfram Language to just automatically pick how to annotate things, then simply give the annotations with rules (->).",
+    "embedding_text": "In PieChart, strings are assumed to be labels, and colors to be styles. If you want the Wolfram Language to just automatically pick how to annotate things, then simply give the annotations with rules (->).",
     "metadata": {
       "example_code": "PieChart[{1 -> \"one\", 2 -> \"two\", 3 -> Blue, 4 -> Red}]",
       "embedded_objects": [],
@@ -9660,8 +9660,8 @@
   },
   {
     "intent_text": "This is an immediate rule, where a specific value for RandomReal[ ] is immediately computed",
-    "context": "There’s a notion of delayed rules too. xrhs computes rhs immediately. But in a delayed rule xrhs (typed : >), rhs is instead recomputed every time it’s requested.",
-    "embedding_text": "This is an immediate rule, where a specific value for RandomReal[ ] is immediately computed. There’s a notion of delayed rules too. xrhs computes rhs immediately. But in a delayed rule xrhs (typed : >), rhs is instead recomputed every time it’s requested.",
+    "context": "There’s a notion of delayed rules too. x->rhs computes rhs immediately. But in a delayed rule x:>rhs (typed : >), rhs is instead recomputed every time it’s requested.",
+    "embedding_text": "This is an immediate rule, where a specific value for RandomReal[ ] is immediately computed. There’s a notion of delayed rules too. x->rhs computes rhs immediately. But in a delayed rule x:>rhs (typed : >), rhs is instead recomputed every time it’s requested.",
     "metadata": {
       "example_code": "x -> RandomReal[]",
       "embedded_objects": [],
@@ -9673,8 +9673,8 @@
   },
   {
     "intent_text": "You can replace four x’s, but they’ll all be the same",
-    "context": "There’s a notion of delayed rules too. xrhs computes rhs immediately. But in a delayed rule xrhs (typed : >), rhs is instead recomputed every time it’s requested.",
-    "embedding_text": "You can replace four x’s, but they’ll all be the same. There’s a notion of delayed rules too. xrhs computes rhs immediately. But in a delayed rule xrhs (typed : >), rhs is instead recomputed every time it’s requested.",
+    "context": "There’s a notion of delayed rules too. x->rhs computes rhs immediately. But in a delayed rule x:>rhs (typed : >), rhs is instead recomputed every time it’s requested.",
+    "embedding_text": "You can replace four x’s, but they’ll all be the same. There’s a notion of delayed rules too. x->rhs computes rhs immediately. But in a delayed rule x:>rhs (typed : >), rhs is instead recomputed every time it’s requested.",
     "metadata": {
       "example_code": "{x, x, x, x} /. x -> RandomReal[]",
       "embedded_objects": [],
@@ -9686,8 +9686,8 @@
   },
   {
     "intent_text": "This is a delayed rule, where the computation of RandomReal[] is delayed",
-    "context": "There’s a notion of delayed rules too. xrhs computes rhs immediately. But in a delayed rule xrhs (typed : >), rhs is instead recomputed every time it’s requested.",
-    "embedding_text": "This is a delayed rule, where the computation of RandomReal[] is delayed. There’s a notion of delayed rules too. xrhs computes rhs immediately. But in a delayed rule xrhs (typed : >), rhs is instead recomputed every time it’s requested.",
+    "context": "There’s a notion of delayed rules too. x->rhs computes rhs immediately. But in a delayed rule x:>rhs (typed : >), rhs is instead recomputed every time it’s requested.",
+    "embedding_text": "This is a delayed rule, where the computation of RandomReal[] is delayed. There’s a notion of delayed rules too. x->rhs computes rhs immediately. But in a delayed rule x:>rhs (typed : >), rhs is instead recomputed every time it’s requested.",
     "metadata": {
       "example_code": "x :> RandomReal[]",
       "embedded_objects": [],
@@ -9699,8 +9699,8 @@
   },
   {
     "intent_text": "RandomReal[] is computed separately when each x is replaced, giving four different values",
-    "context": "There’s a notion of delayed rules too. xrhs computes rhs immediately. But in a delayed rule xrhs (typed : >), rhs is instead recomputed every time it’s requested.",
-    "embedding_text": "RandomReal[] is computed separately when each x is replaced, giving four different values. There’s a notion of delayed rules too. xrhs computes rhs immediately. But in a delayed rule xrhs (typed : >), rhs is instead recomputed every time it’s requested.",
+    "context": "There’s a notion of delayed rules too. x->rhs computes rhs immediately. But in a delayed rule x:>rhs (typed : >), rhs is instead recomputed every time it’s requested.",
+    "embedding_text": "RandomReal[] is computed separately when each x is replaced, giving four different values. There’s a notion of delayed rules too. x->rhs computes rhs immediately. But in a delayed rule x:>rhs (typed : >), rhs is instead recomputed every time it’s requested.",
     "metadata": {
       "example_code": "{x, x, x, x} /. x :> RandomReal[]",
       "embedded_objects": [],
@@ -10140,9 +10140,9 @@
     }
   },
   {
-    "intent_text": "Make replacements for patterns, using  to compute ToUpperCase in each case",
+    "intent_text": "Make replacements for patterns, using :> to compute ToUpperCase in each case",
     "context": "StringCases picks out cases of a particular pattern in a string. StringReplace makes replacements.",
-    "embedding_text": "Make replacements for patterns, using  to compute ToUpperCase in each case. StringCases picks out cases of a particular pattern in a string. StringReplace makes replacements.",
+    "embedding_text": "Make replacements for patterns, using :> to compute ToUpperCase in each case. StringCases picks out cases of a particular pattern in a string. StringReplace makes replacements.",
     "metadata": {
       "example_code": "StringReplace[\"now [several] important [words]\", \n \"[\" ~~ Shortest[x__] ~~ \"]\" :> ToUpperCase[x]]",
       "embedded_objects": [],
