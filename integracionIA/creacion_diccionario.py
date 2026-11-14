@@ -7,9 +7,9 @@ Cada registro corresponde a un ejemplo de código del libro:
     metadata    : código Wolfram real, capítulo y URLs de origen
 
 Uso:
-    python creacion_diccionario.py                 # solo el capítulo de prueba
-    python creacion_diccionario.py --todos         # todos los capítulos del índice
-    python creacion_diccionario.py --url URL -o salida.json
+    python creacion_diccionario.py                 # todo el libro (48 capítulos)
+    python creacion_diccionario.py --url URL       # solo un capítulo concreto
+    python creacion_diccionario.py -o salida.json  # cambiar el fichero de salida
 """
 
 import argparse
@@ -25,19 +25,25 @@ BASE_URL = "https://www.wolfram.com/language/elementary-introduction/3rd-ed/"
 URL_TEST = urljoin(BASE_URL, "02-introducing-functions.html")
 HEADERS = {"User-Agent": "Mozilla/5.0"}  # Simulamos un navegador para evitar bloqueos básicos
 TIMEOUT = 30
+REINTENTOS = 4  # Intentos por descarga ante fallos puntuales de red
 MAX_CONTEXTO = 1000  # Longitud máxima del contexto (en caracteres) para el embedding
 
 
-def descargar(sesion, url):
-    """Devuelve el texto de la URL o None si falla."""
-    try:
-        respuesta = sesion.get(url, headers=HEADERS, timeout=TIMEOUT)
-        respuesta.raise_for_status()
-    except requests.RequestException as error:
-        print(f"Error de conexión en {url}: {error}")
-        return None
-    respuesta.encoding = "utf-8"
-    return respuesta.text
+def descargar(sesion, url, intentos=REINTENTOS):
+    """Devuelve el texto de la URL o None si falla tras varios intentos."""
+    for intento in range(1, intentos + 1):
+        try:
+            respuesta = sesion.get(url, headers=HEADERS, timeout=TIMEOUT)
+            respuesta.raise_for_status()
+            respuesta.encoding = "utf-8"
+            return respuesta.text
+        except requests.RequestException as error:
+            if intento == intentos:
+                print(f"Error de conexión en {url} (tras {intentos} intentos): {error}")
+                return None
+            espera = 2 ** intento  # 2 s, 4 s, ...
+            print(f"  Fallo al descargar {url} ({error}); reintento en {espera} s")
+            time.sleep(espera)
 
 
 def texto_limpio(elemento):
@@ -169,18 +175,22 @@ def extraer_capitulo(sesion, url):
 
 def main():
     parser = argparse.ArgumentParser(description=__doc__, formatter_class=argparse.RawDescriptionHelpFormatter)
-    parser.add_argument("--url", default=URL_TEST, help="URL de un capítulo concreto")
-    parser.add_argument("--todos", action="store_true", help="Procesa todos los capítulos del índice")
+    parser.add_argument("--url", help="Procesa solo este capítulo (por defecto, todo el libro)")
     parser.add_argument("-o", "--salida", default="diccionario_wolfram.json", help="Fichero JSON de salida")
     parser.add_argument("--pausa", type=float, default=0.5, help="Segundos entre capítulos (cortesía con el servidor)")
     args = parser.parse_args()
 
     with requests.Session() as sesion:
-        urls = obtener_capitulos(sesion) if args.todos else [args.url]
-        datos = []
+        urls = [args.url] if args.url else obtener_capitulos(sesion)
+        if not urls:
+            print("No se pudo obtener el índice de capítulos.")
+            return
+        datos, fallidos = [], []
         for i, url in enumerate(urls, 1):
             registros = extraer_capitulo(sesion, url)
             print(f"[{i}/{len(urls)}] {len(registros):3d} ejemplos - {url}")
+            if not registros:
+                fallidos.append(url)
             datos.extend(registros)
             if i < len(urls):
                 time.sleep(args.pausa)
@@ -195,6 +205,10 @@ def main():
     with open(args.salida, "w", encoding="utf-8") as fichero:
         json.dump(datos, fichero, ensure_ascii=False, indent=2)
     print(f"Guardados {len(datos)} registros en {args.salida}")
+    if fallidos:
+        print(f"AVISO: {len(fallidos)} capítulo(s) sin ejemplos, revísalos o vuelve a ejecutar:")
+        for url in fallidos:
+            print(f"  - {url}")
 
 
 if __name__ == "__main__":
