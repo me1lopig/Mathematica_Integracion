@@ -14,6 +14,7 @@ Uso:
 
 import argparse
 import json
+import re
 import time
 from urllib.parse import urljoin
 
@@ -37,6 +38,55 @@ def descargar(sesion, url):
         return None
     respuesta.encoding = "utf-8"
     return respuesta.text
+
+
+def texto_limpio(elemento):
+    """Texto del elemento sin espacios artificiales alrededor del código en línea."""
+    # get_text(" ") metería espacios entre etiquetas ("Plus [2, 2] ."); unimos sin
+    # separador y solo normalizamos los espacios reales del HTML.
+    return re.sub(r"\s+", " ", elemento.get_text("")).strip()
+
+
+INICIO_CAJA, ABRE, CIERRA = "\\!\\(", "\\(", "\\)"
+MAX_CAJA = 300  # Las cajas más cortas (p. ej. un círculo) se dejan tal cual
+
+
+def tipo_caja(caja):
+    """Nombre del marcador según el contenido de la caja incrustada."""
+    if "RasterBox" in caja:
+        return "imagen"
+    if "NetworkGraphics" in caja:
+        return "grafo"
+    return "grafico"
+
+
+def reemplazar_cajas(codigo):
+    """Sustituye las imágenes/gráficos incrustados (\\!\\(\\*GraphicsBox[...]\\)) por un
+    símbolo legible. Algunas pueden pesar varios MB de CompressedData.
+
+    Devuelve (código limpio, lista de marcadores usados)."""
+    partes, marcadores, i = [], [], 0
+    while (inicio := codigo.find(INICIO_CAJA, i)) >= 0:
+        # Buscamos el \) que cierra, teniendo en cuenta los \( \) anidados
+        k, nivel = inicio + len(INICIO_CAJA), 1
+        while nivel and k < len(codigo):
+            if codigo.startswith(ABRE, k):
+                nivel, k = nivel + 1, k + 2
+            elif codigo.startswith(CIERRA, k):
+                nivel, k = nivel - 1, k + 2
+            else:
+                k += 1
+        caja = codigo[inicio:k]
+        partes.append(codigo[i:inicio])
+        if len(caja) > MAX_CAJA:
+            marcador = tipo_caja(caja)
+            marcadores.append(marcador)
+            partes.append(marcador)
+        else:
+            partes.append(caja)
+        i = k
+    partes.append(codigo[i:])
+    return "".join(partes), marcadores
 
 
 def recortar(texto, limite=MAX_CONTEXTO):
@@ -68,6 +118,7 @@ def extraer_capitulo(sesion, url):
     soup = BeautifulSoup(html, "html.parser")
 
     titulo = soup.select_one("table.SectionTitleTable")
+    # El título separa número y nombre en celdas distintas, aquí sí queremos el espacio
     capitulo = titulo.get_text(" ", strip=True) if titulo else ""
 
     contenido = soup.select_one(".wlsite-tb-body-copy")
@@ -82,9 +133,9 @@ def extraer_capitulo(sesion, url):
     for bloque in contenido.select("div.bodytext, div.CodeCaption, div.copyexpr"):
         clases = bloque.get("class", [])
         if "bodytext" in clases:
-            contexto = bloque.get_text(" ", strip=True)
+            contexto = texto_limpio(bloque)
         elif "CodeCaption" in clases:
-            leyenda = bloque.get_text(" ", strip=True).rstrip(":").strip()
+            leyenda = texto_limpio(bloque).rstrip(":").strip()
         elif "copyexpr" in clases:
             # El código está como imagen; el texto real está en el fichero data-c2c-file
             tabla = bloque.select_one("[data-c2c-file]")
@@ -94,11 +145,19 @@ def extraer_capitulo(sesion, url):
             codigo = descargar(sesion, url_codigo)
             if not codigo:
                 continue
+            codigo, marcadores = reemplazar_cajas(codigo.strip())
+            intent = leyenda or recortar(contexto)
+            contexto_corto = recortar(contexto)
             registros.append({
-                "intent_text": leyenda or recortar(contexto),
-                "context": recortar(contexto),
+                "intent_text": intent,
+                "context": contexto_corto,
+                # Texto recomendado para el embedding: la leyenda sola a veces es pobre
+                # ("The maximum of these numbers is 7"), el contexto aporta el significado.
+                "embedding_text": intent if intent == contexto_corto else f"{intent}. {contexto_corto}",
                 "metadata": {
-                    "example_code": codigo.strip(),
+                    "example_code": codigo,
+                    # Objetos incrustados sustituidos por un marcador (el original está en code_url)
+                    "embedded_objects": marcadores,
                     "chapter": capitulo,
                     "source_url": url,
                     "code_url": url_codigo,
@@ -125,6 +184,13 @@ def main():
             datos.extend(registros)
             if i < len(urls):
                 time.sleep(args.pausa)
+
+    # Marcamos los códigos que ya aparecieron antes (p. ej. RandomInteger[100] dos veces)
+    vistos = {}
+    for indice, registro in enumerate(datos):
+        codigo = registro["metadata"]["example_code"]
+        registro["metadata"]["duplicate_of"] = vistos.get(codigo)  # índice del primero o None
+        vistos.setdefault(codigo, indice)
 
     with open(args.salida, "w", encoding="utf-8") as fichero:
         json.dump(datos, fichero, ensure_ascii=False, indent=2)
