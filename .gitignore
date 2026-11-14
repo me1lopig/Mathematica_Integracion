@@ -1,0 +1,15 @@
+# Python
+__pycache__/
+*.py[cod]
+.venv/
+venv/
+env/
+
+# Salidas generadas por el scraper
+integracionIA/diccionario_wolfram*.json
+
+# Editores / SO
+.vscode/
+.idea/
+Thumbs.db
+.DS_Store
