@@ -16,6 +16,7 @@
 - [🚀 Instalación y uso](#-instalación-y-uso)
 - [📦 Formato de salida](#-formato-de-salida)
 - [📊 Resultados](#-resultados)
+- [✅ Validación de calidad](#-validación-de-calidad)
 - [🛠️ Configuración](#️-configuración)
 - [⚠️ Limitaciones conocidas](#️-limitaciones-conocidas)
 - [🗺️ Próximos pasos](#️-próximos-pasos)
@@ -147,6 +148,53 @@ CommunityGraphPlot[<grafo>]        →   CommunityGraphPlot[grafo]
 | 🖼️ Ejemplos con objetos sustituidos | 37 |
 | 🔁 Códigos duplicados | 17 |
 | 💬 Ejemplos sin frase propia | 22 |
+
+---
+
+## ✅ Validación de calidad
+
+[`validar_diccionario.py`](validar_diccionario.py) comprueba que el JSON generado es correcto y coherente. No necesita dependencias extra para las comprobaciones locales.
+
+```bash
+python validar_diccionario.py               # comprobaciones locales
+python validar_diccionario.py --online 25   # además compara 25 ejemplos al azar con la web
+python validar_diccionario.py -f otro.json  # valida otro fichero
+```
+
+> 🚦 Termina con código `0` si no hay errores y `1` si los hay (los avisos no cambian el código), por lo que se puede usar en automatizaciones.
+
+### 🔍 Qué comprueba
+
+| | Comprobación | Tipo |
+|---|---|---|
+| 🧱 | **Estructura**: todos los campos existen y no están vacíos; las URL tienen la forma esperada | ❌ Error |
+| 🔗 | **Coherencia**: `embedding_text` contiene `intent_text`; `duplicate_of` apunta a un código idéntico; no hay repetidos sin marcar; los marcadores `imagen`/`grafico`/`grafo` aparecen en el código | ❌ Error |
+| 🖼️ | **Cajas incrustadas** sin sustituir en el código | ❌ Error |
+| 📚 | **Cobertura**: hay 48 capítulos | ❌ Error |
+| 🌐 | **Contra la web** (`--online`): el código guardado coincide con el original | ❌ Error |
+| 🧮 | **Sintaxis**: corchetes, llaves y paréntesis balanceados (ignorando cadenas y comentarios) | ⚠️ Aviso |
+| 📏 | Código muy largo, `CompressedData` suelto o caracteres privados (iconos) en el texto | ⚠️ Aviso |
+| 🧹 | Espaciado raro en el contexto (¿icono perdido?) | ⚠️ Aviso |
+| 💬 | Ejemplos **sin frase propia** (`intent_text` = `context`) | ⚠️ Aviso |
+
+### 📋 Resultado con el diccionario actual
+
+```text
+❌ 2 error(es)
+  ERROR  #413: queda una caja incrustada sin sustituir
+  ERROR  #415: queda una caja incrustada sin sustituir
+
+⚠️  38 aviso(s) en 3 tipo(s)
+    22 × sin frase propia
+    15 × espaciado raro en el contexto
+     1 × contiene CompressedData sin sustituir
+```
+
+- ❌ Los **2 errores** son conocidos: dos ejemplos del capítulo 26 con varios círculos de colores pequeños que se conservan tal cual (solo se sustituyen los objetos de más de `MAX_CAJA` caracteres).
+- ⚠️ Los **avisos** son limitaciones documentadas del contenido de origen, no fallos del proceso.
+- 🌐 Las muestras comparadas con la web **coinciden** con el código original.
+
+> 💡 Ejecuta el validador cada vez que regeneres el JSON para detectar regresiones.
 
 ---
 
