@@ -6,7 +6,7 @@ venv/
 env/
 
 # Salidas generadas por el scraper
-integracionIA/diccionario_wolfram*.json
+# El diccionario generado (diccionario_wolfram.json) se versiona a propósito
 
 # Editores / SO
 .vscode/
