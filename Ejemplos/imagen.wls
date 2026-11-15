@@ -6,7 +6,7 @@ Print["Iniciando renderizado matemático en Wolfram Engine..."];
 (* 1. Construcción de la expresión gráfica paramétrica *)
 (* Se sustituye Viridis por SunsetColors para garantizar compatibilidad *)
 superficie = Plot3D[
-  Sin[x] Sin[y], {x, -Pi, Pi}, {y, -Pi, Pi},
+  Sin[x] Cos[y], {x, -Pi, Pi}, {y, -Pi, Pi},
   ColorFunction -> "SunsetColors",
   Mesh -> None,
   AxesLabel -> {"x", "y", "z"},
